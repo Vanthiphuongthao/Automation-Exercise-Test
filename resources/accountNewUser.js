@@ -1,0 +1,18 @@
+export const accountNewUser = {
+  name: "Tina Test",
+  email: "Tina.test@example.com",
+  password: "Test@123",
+  day: "30",
+  month: "March",
+  year: "1997",
+  firstName: "Lina",
+  lastName: "Test",
+  company: "ABC .Co",
+  address1: "123 Test Street",
+  address2: "12345 Test Street",
+  country: "Canada",
+  state: "Ontario",
+  city: "Toronto",
+  zipcode: "A1B2C3",
+  mobileNumber: "1234567890",
+};
