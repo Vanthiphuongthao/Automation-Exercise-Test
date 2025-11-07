@@ -7,6 +7,7 @@ import paymentPage from "../pageobjects/paymentPage.page.js";
 import { signupNewUser } from "../helpers/signup.helper.js";
 import { accountNewUser } from "../../resources/accountNewUser.js";
 import { paymentDetails } from "../../resources/paymentDetails.js";
+import { addProductsToCart } from "../helpers/addProductsToCart.helpers.js";
 
 describe("Test Case 14: Place Order - Register while Checkout", () => {
   it("should register new user during checkout", async () => {
@@ -15,22 +16,11 @@ describe("Test Case 14: Place Order - Register while Checkout", () => {
     await expect(homePage.girlImgResponsive).toBeDisplayed();
 
     //add product to Cart & view cart
-    await homePage.productsButton.click();
-    await expect(await productsPage.getTitleAllProducts()).toContain(
-      "ALL PRODUCTS"
-    );
-    await productsPage.addProductsToCart();
-    await expect(cartPage.shoppingCart).toBeDisplayed();
-    console.log(
-      "✅ SUCCESSFULLY! Step reached home opened & added product to cart"
-    );
+    await addProductsToCart();
 
     //proceed to checkout
     await cartPage.clickProceedToCheckOut();
     await cartPage.signupLoginBtn.click();
-    console.log(
-      "✅ SUCCESSFULLY! Step click Proceed to checkout & signup new user"
-    );
 
     // click register/login -> signup -> verify account created
     // & Verify "Logged in as username"
@@ -40,31 +30,24 @@ describe("Test Case 14: Place Order - Register while Checkout", () => {
     // go to cart & proceed to checkout
     await homePage.cartButton.click();
     await cartPage.clickProceedToCheckOut();
-    console.log("✅ SUCCESSFULLY! go to cart again & proceed to checkout");
 
     // verify address details and order review
     await checkoutPage.verifyAddressSectionDisplayed();
-    console.log("✅ SUCCESSFULLY! verify address details & order review");
 
     // enter description in comment text area & click 'Place Order'
     await checkoutPage.enterCommentAndPlaceOrder("Please deliver ASAP");
-    console.log("✅ SUCCESSFULLY! enter cmt & place order");
 
     // enter payment details & click 'Pay and Confirm Order' button
     await paymentPage.fillPaymentDetails(paymentDetails);
-    console.log("✅ SUCCESSFULLY! fill payment details");
 
     // verify success message
-    await paymentPage.alertSuccessMsg.waitForDisplayed({ timeout: 10000 });
-    await expect(paymentPage.alertSuccessMsg).toContain(
-      "Your order has been placed successfully!"
+    await expect(await paymentPage.getSuccessMsgText()).toContain(
+      "Congratulations! Your order has been confirmed!"
     );
-    console.log("✅ SUCCESSFULLY! verify alert & success msg");
 
     //deleted account
     await accountPage.deleteAccountBtn.click();
     await expect(accountPage.accountDeletedText).toBeDisplayed();
     await accountPage.btnContinue.click();
-    console.log("✅ SUCCESSFULLY! delete account");
   });
 });

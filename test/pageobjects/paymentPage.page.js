@@ -47,6 +47,7 @@ class paymentPage {
   }
 
   async getSuccessMsgText() {
+    await this.successMsg.waitForDisplayed({ timeout: 5000 });
     return await this.successMsg.getText();
   }
   async clickDownloadInvoidBtn() {
