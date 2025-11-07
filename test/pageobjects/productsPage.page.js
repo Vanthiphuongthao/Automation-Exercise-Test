@@ -59,6 +59,7 @@ class productsPage {
     return await this.titleAllProducts.getText();
   }
   async clickViewProductOfFirstProduct() {
+    await this.viewProductOfFirstProductBtn.scrollIntoView();
     await this.viewProductOfFirstProductBtn.click();
   }
   async searchProduct(productName) {

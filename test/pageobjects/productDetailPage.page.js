@@ -39,11 +39,14 @@ class productDetailPage {
   get addReview() {
     return $("#review");
   }
+  get reviewForm() {
+    return $("#review-form");
+  }
   get submitBtn() {
     return $("#button-review");
   }
   get successMsg() {
-    return $("div.alert-success.alert span");
+    return $(".alert-success.alert");
   }
 
   // ACTIONS
@@ -87,17 +90,21 @@ class productDetailPage {
     await this.userNameInput.waitForDisplayed();
     await this.userNameInput.setValue(name);
     await this.emailAddress.setValue(email);
-    await this.addReview.setValue(
-      textReview ||
-        "I recently bought this product and I’m really satisfied with the quality. " +
-          "The material feels durable and looks exactly like the photos on the website. " +
-          "Shipping was fast and the packaging was neat. Definitely worth the price!"
-    );
+    await this.addReview.setValue(textReview);
     await this.submitBtn.click();
   }
   async getSuccessMsg() {
-    await this.successMsg.waitForDisplayed();
-    return await this.successMsg.getText();
+    // wait for alert
+    await browser.waitUntil(async () => await this.successMsg.isDisplayed(), {
+      timeout: 5000,
+      timeoutMsg: "Alert success message did not appear in time",
+    });
+
+    // wait a second to text render
+    await browser.pause(500);
+
+    const textReviewMsg = await this.successMsg.getText();
+    return textReviewMsg ? textReviewMsg.trim() : "";
   }
 }
 
