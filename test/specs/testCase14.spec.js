@@ -1,6 +1,5 @@
 import homePage from "../pageobjects/homePage.page.js";
 import accountPage from "../pageobjects/accountPage.page.js";
-import productsPage from "../pageobjects/productsPage.page.js";
 import cartPage from "../pageobjects/cartPage.page.js";
 import checkoutPage from "../pageobjects/checkoutPage.page.js";
 import paymentPage from "../pageobjects/paymentPage.page.js";
