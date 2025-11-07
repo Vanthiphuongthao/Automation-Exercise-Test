@@ -1,5 +1,3 @@
-import productDetailPage from "./productDetailPage.page";
-
 class productsPage {
   // ====== Elements =====
   get titleAllProducts() {
@@ -118,9 +116,18 @@ class productsPage {
 
   async addAllProducts() {
     const btns = await this.addBtns;
-    for (let i = 0; i < buttons.length; i += 2) {
+    for (let i = 0; i < btns.length; i += 2) {
+      await btns[i].scrollIntoView();
       await btns[i].waitForClickable({ timeout: 10000 });
       await btns[i].click();
+
+      if (i + 2 >= btns.length) {
+        await this.viewCartBtn.waitForClickable({ timeout: 10000 });
+        await this.viewCartBtn.click();
+        break;
+      }
+
+      //
       await this.continueShoppingBtn.waitForClickable({ timeout: 10000 });
       await this.continueShoppingBtn.click();
     }
