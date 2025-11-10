@@ -13,10 +13,19 @@ describe("Test Case 18: View Category Products", () => {
     await expect(homePage.dressCategory).toBeDisplayed();
     await homePage.dressCategory.click();
 
-    const categoryTitle = await $("h2.title.text-center");
-    await expect(categoryTitle).toBeDisplayed();
-    await expect(await categoryTitle.getText()).toContain(
-      "Women - Dress Products"
-    );
+    //Verify that category page is displayed and confirm text 'WOMEN - TOPS PRODUCTS'
+    const title = await productsPage.getTitleAllProducts();
+    const normalizedTitle = title.replace(/\s+/g, " ").trim().toLowerCase();
+    await expect(normalizedTitle).toContain("women - dress products");
+
+    // click on 'TShirts' - sub-category link of 'Men' category & verify that user is navigated to that category page
+    await productsPage.clickMenCategory();
+    await productsPage.clickTShirtsCategory();
+    const titleTShirtsMen = await productsPage.getTitleAllProducts();
+    const normalizedTitleMen = titleTShirtsMen
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+    await expect(normalizedTitleMen).toContain("men - tshirts products");
   });
 });
