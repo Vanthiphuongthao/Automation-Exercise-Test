@@ -10,9 +10,8 @@ import { addProductsToCart } from "../helpers/addProductsToCart.helpers.js";
 
 describe("Test Case 14: Place Order - Register while Checkout", () => {
   it("should register new user during checkout", async () => {
-    //launch browser & verify
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     //add product to Cart & view cart
     await addProductsToCart();

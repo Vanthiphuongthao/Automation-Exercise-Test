@@ -6,8 +6,8 @@ import { existingUser } from "../../resources/existingUser.js";
 
 describe("Test Case 20: Search Products and Verify Cart After Login", () => {
   it("Should retain cart items after login", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.productsButton.click();
     await expect(await productsPage.getTitleAllProducts()).toContain(

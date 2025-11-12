@@ -6,8 +6,8 @@ import { existingUser } from "../../resources/existingUser.js";
 
 describe("Test Case 4: Logout User", () => {
   it("Should login and logout successfully", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.signupLoginButton.click();
     await expect(signupLoginPage.loginText).toBeDisplayed();

@@ -4,9 +4,8 @@ import { addProductsToCart } from "../helpers/addProductsToCart.helpers.js";
 
 describe("Test Case 17: Remove Products from Cart", () => {
   it("Should remove products from cart and show empty cart", async () => {
-    // launch browser & verify
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     // add products to cart & verify cart page visible
     await addProductsToCart();

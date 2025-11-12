@@ -9,8 +9,8 @@ import { paymentDetails } from "../../resources/paymentDetails.js";
 describe("Test Case 16: Place Order - Login before Checkout", () => {
   it("Should logged in before checkout", async () => {
     // launch browser & verify
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     //login User
     await loginUser();

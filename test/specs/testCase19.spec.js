@@ -3,8 +3,8 @@ import productsPage from "../pageobjects/productsPage.page.js";
 
 describe("Test Case 19: View & Cart Brand Products", () => {
   it("Should display products by selected brand", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.productsButton.click();
 

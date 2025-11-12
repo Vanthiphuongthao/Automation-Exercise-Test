@@ -5,8 +5,8 @@ import productDetailsPage from "../pageobjects/productDetailPage.page.js";
 
 describe("Test Case 8: Verify All Products and product detail page", () => {
   it("Should display all products and show correct product detail info", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.productsButton.click();
     const titleText = await productsPage.getTitleAllProducts();

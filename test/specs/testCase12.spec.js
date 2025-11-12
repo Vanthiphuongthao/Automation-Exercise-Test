@@ -5,8 +5,8 @@ import cartPage from "../pageobjects/cartPage.page.js";
 
 describe("Test Case 12: Add Products in cart", () => {
   it("Should add two products to cart and verify their details", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.productsButton.click();
     await expect(await productsPage.getTitleAllProducts()).toContain(

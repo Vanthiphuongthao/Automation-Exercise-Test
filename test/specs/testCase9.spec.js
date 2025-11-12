@@ -4,8 +4,8 @@ import productsPage from "../pageobjects/productsPage.page.js";
 
 describe("Test Case 9: Search Product", () => {
   it("Should display searched products correctly", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.productsButton.click();
     await expect(await productsPage.getTitleAllProducts()).toContain(

@@ -4,8 +4,8 @@ import productDetailPage from "../pageobjects/productDetailPage.page.js";
 
 describe("Test Case 21: Add review on product", () => {
   it("Should allow user to add a product review successfully", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.productsButton.click();
     await expect(await productsPage.getTitleAllProducts()).toContain(

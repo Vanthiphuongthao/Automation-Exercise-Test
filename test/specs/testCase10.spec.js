@@ -2,8 +2,8 @@ import homePage from "../pageobjects/homePage.page.js";
 
 describe("Test Case 10: Verify Subscription in home page", () => {
   it("Should subscribe with valid email and display success message", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.scrollToSubscribeSection();
     await expect(homePage.subscription).toBeDisplayed();

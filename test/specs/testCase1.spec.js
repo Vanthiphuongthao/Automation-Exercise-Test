@@ -6,8 +6,8 @@ import { accountNewUser } from "../../resources/accountNewUser.js";
 
 describe("Test Case 1: Register User", () => {
   it("Should register and delete user successfully", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     // await expect(homePage.homePageIsVisible()).toBeDisplayed();
 

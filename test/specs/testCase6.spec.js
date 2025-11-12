@@ -3,8 +3,8 @@ import contactUsPage from "../pageobjects/contactUsPage.page.js";
 
 describe("Test Case 6: Contact Us Form", () => {
   it("Should allow user to submit the contact us form successfully", async () => {
-    await homePage.open();
-    await expect(await homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.contactUsButton.click();
     await expect(await contactUsPage.getTitleContactUs()).toContain(

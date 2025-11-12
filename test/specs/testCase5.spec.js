@@ -6,8 +6,8 @@ import { existingUser } from "../../resources/existingUser.js";
 
 describe("Test Case 5: Register User with existing email", () => {
   it("Should show error message when registering with existing email", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.signupLoginButton.click();
     await expect(signupLoginPage.newUserSignupText).toBeDisplayed();

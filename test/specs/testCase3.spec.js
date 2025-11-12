@@ -4,8 +4,8 @@ import signupLoginPage from "../pageobjects/signupLogin.page.js";
 
 describe("Test Case 3: Login User with incorrect email and password", () => {
   it("Should show error message when using invalid credentials", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.signupLoginButton.click();
     await expect(signupLoginPage.loginText).toBeDisplayed();

@@ -3,8 +3,8 @@ import cartPage from "../pageobjects/cartPage.page.js";
 
 describe("Test Case 22: Add to Cart from Recommended Items", () => {
   it("Should add recommended product to cart and verify", async () => {
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    // Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     await homePage.scrollToRecommendSection();
     const titleRecommendedItems = await homePage.recommendedItems.getText();

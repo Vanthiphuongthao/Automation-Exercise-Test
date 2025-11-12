@@ -90,6 +90,12 @@ class HomePage {
     await this.recommendedItems.scrollIntoView();
   }
 
+  async verifyHomePageVisible() {
+    await this.open();
+    await this.girlImgResponsive.waitForDisplayed();
+    return this.girlImgResponsive;
+  }
+
   async scrollToSubscribeSection() {
     await this.subscription.scrollIntoView();
   }

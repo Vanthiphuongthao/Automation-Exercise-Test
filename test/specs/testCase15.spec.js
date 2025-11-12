@@ -10,9 +10,8 @@ import { paymentDetails } from "../../resources/paymentDetails.js";
 
 describe("Test Case 15: Place Order - Register before Checkout", () => {
   it("Should register new user before checkout", async () => {
-    // launch broswer & verify
-    await homePage.open();
-    await expect(homePage.girlImgResponsive).toBeDisplayed();
+    /// Launch browser & verify that homepage is visible successfully
+    await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
     const user = await signupNewUser(accountNewUser);
     console.log("Created user: ", user.email);
