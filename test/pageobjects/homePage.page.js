@@ -34,6 +34,7 @@ class HomePage {
   get categories() {
     return $("#accordian");
   }
+
   get womenCategory() {
     return $("#accordian > div:nth-child(1) h4 a span i");
   }
@@ -41,8 +42,16 @@ class HomePage {
     return $("a[href='/category_products/1']");
   }
 
+  get recommendedSection() {
+    return $("div#recommended-items");
+  }
+
   get recommendedItems() {
     return $("div.recommended_items h2");
+  }
+
+  get firstRecommendedAddToCartBtn() {
+    return $("div.recommended_items .item.active .productinfo a.add-to-cart");
   }
   get blueTopAddToCartButton() {
     return $("div#recommended-item-carousel a.btn.btn-default.add-to-cart");
@@ -77,66 +86,13 @@ class HomePage {
     browser.url("https://www.automationexercise.com/");
   }
 
-  // async homePageIsVisible() {
-  //   await this.girlImgResponsive.waitForDisplayed();
-  //   return this.girlImgResponsive;
-  // }
+  async scrollToRecommendSection() {
+    await this.recommendedItems.scrollIntoView();
+  }
 
-  // async signupLoginClick() {
-  //   await this.signupLoginButton.waitForClickable();
-  //   await this.signupLoginButton.click();
-  //   return new LoginSignupPage();
-  // }
-
-  // async contactUsButtonClick() {
-  //   await this.contactUsButton.click();
-  //   return new ContactUsPage();
-  // }
-
-  // async testCasesButtonClick() {
-  //   await this.testCasesButton.click();
-  //   return new TestCasesPage();
-  // }
-
-  // async productsButtonClick() {
-  //   await this.productsButton.click();
-  //   return new ProductsPage();
-  // }
-
-  // async cartButtonClick() {
-  //   await this.cartButton.click();
-  //   return new CartPage();
-  // }
-
-  // async viewProduct1ButtonClick() {
-  //   await this.viewProduct1Button.waitForClickable();
-  //   await this.viewProduct1Button.click();
-  //   return new ProductDetailPage();
-  // }
-
-  // async womenCategoryClick() {
-  //   await this.womenCategory.waitForClickable();
-  //   await this.womenCategory.click();
-  //   return this;
-  // }
-
-  // async dressCategoryClick() {
-  //   await this.dressCategory.waitForClickable();
-  //   await this.dressCategory.click();
-  //   return new ProductsPage();
-  // }
-
-  // async blueTopAddToCartButtonClick() {
-  //   await this.blueTopAddToCartButton.waitForClickable();
-  //   await this.blueTopAddToCartButton.click();
-  //   return this;
-  // }
-
-  // async viewCartButtonClick() {
-  //   await this.viewCartButton.waitForDisplayed();
-  //   await this.viewCartButton.click();
-  //   return new CartPage();
-  // }
+  async scrollToSubscribeSection() {
+    await this.subscription.scrollIntoView();
+  }
 
   // async scrollUpButtonClick() {
   //   await this.scrollUpButton.waitForClickable();
@@ -144,12 +100,12 @@ class HomePage {
   //   return this;
   // }
 
-  // async fillSubscribe(email) {
-  //   await this.subscribeEmailInput.setValue(email);
-  //   await this.subscribeButton.waitForClickable();
-  //   await this.subscribeButton.click();
-  //   return this;
-  // }
+  async fillSubscribe(email) {
+    await this.subscribeEmailInput.setValue(email);
+    await this.subscribeButton.waitForClickable();
+    await this.subscribeButton.click();
+    return this;
+  }
 }
 
 export default new HomePage();
