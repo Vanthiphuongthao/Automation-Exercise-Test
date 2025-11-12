@@ -3,8 +3,8 @@ import signupLoginPage from "../pageobjects/signupLogin.page.js";
 import accountPage from "../pageobjects/accountPage.page.js";
 
 export async function signupNewUser(accountData) {
-  await homePage.open();
-  await expect(homePage.girlImgResponsive).toBeDisplayed();
+  //Launch browser & verify that homepage is visible successfully
+  await expect(await homePage.verifyHomePageVisible()).toBeDisplayed();
 
   await homePage.signupLoginButton.click();
   await expect(signupLoginPage.newUserSignupText).toBeDisplayed();
