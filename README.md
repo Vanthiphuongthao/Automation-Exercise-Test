@@ -34,7 +34,7 @@ The project was created to practice test automation skills using the WebdriverIO
 <ol>1. Clone the repository </ol>
 
 ```
-git clone <your-repo-link>
+git clone <repo-link>
 cd project
 ```
 <ol>2. Install dependencies </ol>
