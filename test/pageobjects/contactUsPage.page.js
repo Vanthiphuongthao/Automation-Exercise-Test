@@ -28,7 +28,7 @@ class contactUsPage {
   }
 
   get alertSuccess() {
-    return $(".status.alert.alert-success");
+    return $(".status.alert-success");
   }
   get homePageButton() {
     return $("a.btn.btn-success");
@@ -63,23 +63,37 @@ class contactUsPage {
 
   async acceptAlert() {
     try {
-      // Chờ alert xuất hiện trong 3 giây
       await browser.waitUntil(async () => await browser.isAlertOpen(), {
-        timeout: 3000,
-        timeoutMsg: "No alert appeared within 3 seconds",
+        timeout: 7000,
+        timeoutMsg: "No alert appeared within time",
       });
+
       await browser.acceptAlert();
-      console.log("✅ Alert accepted successfully");
+      console.log("Alert accepted successfully");
+
+      // Wait a moment for DOM to update
+      await browser.pause(700);
     } catch (error) {
-      console.warn("⚠️ No alert found or already closed. Continuing test...");
+      console.warn("No alert found or already closed. Continuing test...");
     }
   }
 
   async getAlertSuccessText() {
-    await browser.pause(5000);
-    await this.alertSuccess.waitForDisplayed({ timeout: 5000 });
-    const text = await this.alertSuccess.getText();
-    return text.trim();
+    try {
+      await this.alertSuccess.waitForExist({
+        timeout: 10000,
+        timeoutMsg: "Success message did not exist in time",
+      });
+
+      //
+      await browser.pause(5000);
+
+      const message = await this.alertSuccess.getText();
+      return message.trim();
+    } catch (err) {
+      console.warn("Success message disappeared too quickly!");
+      return "";
+    }
   }
 
   async clickHomePageButton() {

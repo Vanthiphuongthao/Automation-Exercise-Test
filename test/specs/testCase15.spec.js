@@ -1,4 +1,4 @@
-import homePage from "../pageobjects/homePage.page";
+import homePage from "../pageobjects/homePage.page.js";
 import checkoutPage from "../pageobjects/checkoutPage.page.js";
 import paymentPage from "../pageobjects/paymentPage.page.js";
 import accountPage from "../pageobjects/accountPage.page.js";

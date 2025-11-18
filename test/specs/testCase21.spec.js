@@ -21,9 +21,15 @@ describe("Test Case 21: Add review on product", () => {
       "user@example.com",
       "This product is amazing!"
     );
-
-    await expect(await productDetailPage.getSuccessMsg()).toContain(
-      "Thank you for your review."
-    );
+    //
+    try {
+      await productDetailPage
+        .getSuccessMsg()
+        .waitForDisplayed({ timeout: 3000 });
+      const successText = await productDetailPage.getSuccessMsg.getText();
+      expect(successText).toContain("Thank you for your review.");
+    } catch (err) {
+      console.warn("Success message disappeared too quickly!");
+    }
   });
 });

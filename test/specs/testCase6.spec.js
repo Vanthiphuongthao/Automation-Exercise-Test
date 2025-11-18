@@ -18,7 +18,7 @@ describe("Test Case 6: Contact Us Form", () => {
 
     // verify success message
     const successMsg = await contactUsPage.getAlertSuccessText();
-    await expect(successMsg).toContain(
+    expect(successMsg).toContain(
       "Success! Your details have been submitted successfully."
     );
 
